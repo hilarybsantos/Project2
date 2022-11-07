@@ -1,0 +1,55 @@
+---
+title: "Project Data Visualization"
+subtitle: "CPSC 292 Section -- Waldrop"
+author: "Phoebe Seo"
+date: "10/19/2022"
+output: html_notebook
+---
+
+## Data Libraries
+```{r}
+library(ggplot2)
+read.csv("~/chapman/CPSC292/Food Preference Project/Food_Preference.csv")
+foodpreference <- read.csv("~/chapman/CPSC292/Food Preference Project/Food_Preference.csv")
+```
+
+
+
+## Dessert Preferences of Participants of Different Ages
+```{r}
+ggplot(foodpreference, aes(x=Dessert, y=Age, fill=Dessert)) +
+  geom_violin(col="white",size=1) +
+  geom_jitter(color="mediumpurple4", size=0.7, alpha=0.9) +
+  ylab("Age of Participants (Years)") +
+  xlab("Dessert Preferences") +
+  ggtitle("Dessert Preferences of Participants of Different Ages") +
+  scale_fill_manual(values=c("hotpink3","coral","lightgoldenrod1")) +
+  theme(plot.title = element_text(hjust=0.5))
+```
+This violin plots displays the dessert preference of the participants. When asked if they consumed desserts normally, the participants responded maybe, no, or yes.The smaller points throughout the plot are the individual data points of participants, while the colored sections display the average amount of participants for each choice. Horizontally, the colored sections show how many participants of that specific age chose each answer choice. Most participants that were around the age of 24 preferred eating dessert but a large majority also chose the maybe option. While some people of this age group chose to not eat dessert, it was not as many as the other two options. 
+ 
+
+
+
+## Food Preferences of Participants of Different Ages
+```{r,include=TRUE}
+ggplot(foodpreference, aes(x=Food, y=Age, fill=Food)) +
+  geom_boxplot(col="royalblue4",size=0.6) +
+  geom_jitter(color="slateblue4", size=0.8 , alpha=0.9) +
+  ylab("Age of Participants (Years)") +
+  xlab("Food Preferences") +
+  ggtitle("Food Preferences of Participants of Different Ages") +
+  scale_fill_manual(values=c("skyblue2","mediumpurple")) +
+  theme(plot.title = element_text(hjust=0.5)) 
+```
+
+The boxes show the average outcome of the data, and in this case, the average age of adults that enjoyed traditional or western food. The lines in the boxes, however, represent the overall median age that enjoyed the two types of foods. The whiskers represent the maximum and minimum ages, and the bigger points represent outliers that were too big to be included in this max and min. The smaller points throughout the plot are the individual data points of participants. On average, older participants (of around 28 years old) preferred traditional food while participants about 24 years old preferred traditional food. Overall, the data is not very significant.
+
+
+
+
+# Cited Sources
+http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
+https://web.itu.edu.tr/~tokerem/The_Book_of_R.pdf
+https://www.kaggle.com/datasets/vijayashreer/food-preferences
+https://r-graph-gallery.com/ggplot2-package.html
