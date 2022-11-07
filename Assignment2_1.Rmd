@@ -1,0 +1,57 @@
+---
+title: "Assignment 2.1"
+subtitle: "CPSC 292 Section 02 -- Hansen"
+author: "Hilary Santos"
+date: "10/01/2022"
+output: html_notebook
+---
+
+## Assignment 2.1 
+
+```{r, include=TRUE}
+# Loading required libraries
+
+```
+
+### Question 1
+
+*Load the pressure data set. Make a plot of vapor pressure in mmHg versus temperature in C of mercury. Set the axis labels and title. Make the same plot using a different method (either with or without a formula).*
+
+Plot without a formula: 
+```{r, include=TRUE}
+data("pressure")
+
+plot(pressure$temperature, pressure$pressure, 
+     xlab = "Temperature (C)",
+     ylab = "Vapor Pressure (mmHg)",
+     main= "Vapor Pressure v Temperature on Mercury")
+```
+
+Plot with a formula: 
+```{r, include=TRUE}
+data("pressure")
+
+plot(pressure ~ temperature, data = pressure,
+     xlab = "Temperature (C)",
+     ylab = "Vapor Pressure (mmHg)",
+     main= "Vapor Pressure v Temperature on Mercury")
+```
+
+
+### Question 2
+
+*Load the dataset Loblolly. Make a plot of height versus age of trees where data are triangle-shaped points. Color the points according to the seed number.*
+
+```{r, include=TRUE}
+data("Loblolly")
+force(Loblolly)
+
+seeds <- c("red", "orange","yellow", "green", "blue", "purple", "orchid4", "black", "gray", "pink", "brown", "tan", "yellowgreen")
+
+plot(Loblolly$age, Loblolly$height,
+     xlab = "Age",
+     ylab = "Height",
+     main = "Loblolly Tree Height v Age",
+     pch=2,
+     col=seeds[Loblolly$Seed])
+```
