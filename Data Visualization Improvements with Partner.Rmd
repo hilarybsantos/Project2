@@ -1,0 +1,54 @@
+---
+title: "Data Corrections"
+subtitle: "CPSC 292 Section -- Hansen"
+author: "Hilary Santos and Phoebe Seo"
+date: "11/18/2022"
+output: html_notebook
+---
+
+## Data Libraries
+```{r}
+library(ggplot2)
+read.csv("~/chapman/CPSC292/Food Preference Project/Data/Food_Preference.csv")
+foodpreference <- read.csv("~/chapman/CPSC292/Food Preference Project/Data/Food_Preference.csv")
+```
+
+## Food and Juice Preferences of Participants of Different Ages
+
+```{r}
+
+choice <- function(what , age){
+  ggplot(fixed_data, aes_string(x = what, y = age, fill = what)) +
+  geom_boxplot(col = "royalblue4", size = 0.7) + 
+  theme_minimal() +
+  ylab(sub(" ", " ", age)) +
+  xlab(sub(" ", " ", what)) +
+  scale_fill_manual(values = c("skyblue2", "mediumpurple")) +
+  theme(plot.title = element_text(hjust = 0.5))}
+
+choice("Food", "Age")
+choice("Juice", "Age")
+```
+
+```{r}
+both <- choice("Food", "Age")
+  choice("Juice", "Age")
+x <- "both"
+
+if(x == "food"){
+  choice("Food", "Age")
+} else if(x == "drink"){
+  choice("Juice", "Age")
+} else {
+  both
+}
+
+```
+
+
+
+# Cited Sources
+http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
+https://web.itu.edu.tr/~tokerem/The_Book_of_R.pdf
+https://www.kaggle.com/datasets/vijayashreer/food-preferences
+https://r-graph-gallery.com/ggplot2-package.html
